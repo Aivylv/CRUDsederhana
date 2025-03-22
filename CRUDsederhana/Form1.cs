@@ -34,7 +34,10 @@ namespace CRUDsederhana
         }
         private void LoadData()
         {
-            
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                
+            }
         }
     }
 }
