@@ -109,6 +109,7 @@ namespace CRUDsederhana
                             string query = "DELETE FROM Mahasiswa WHERE NIM = @NIM";
                             using (SqlCommand cmd = new SqlCommand(query, conn))
                             {
+                                cmd.Parameters.AddWithValue("@NIM", nim);
                                 
                             }
                         }
