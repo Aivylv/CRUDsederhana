@@ -10,5 +10,9 @@ using System.Windows.Forms;
 
 namespace CRUDsederhana
 {
+    public partial class Form1: Form
+    {
 
+
+    }
 }
