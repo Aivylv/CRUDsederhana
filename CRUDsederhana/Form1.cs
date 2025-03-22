@@ -14,7 +14,7 @@ namespace CRUDsederhana
     {
         public Form1()
         {
-            
+            InitializeComponent();
         }
 
     }
