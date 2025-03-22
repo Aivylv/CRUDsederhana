@@ -100,7 +100,10 @@ namespace CRUDsederhana
                 DialogResult confirm = MessageBox.Show("Yakin ingin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirm == DialogResult.Yes)
                 {
-                    
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        
+                    }
                 }
             }
         }
