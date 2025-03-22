@@ -32,5 +32,9 @@ namespace CRUDsederhana
             txtAlamat.Clear();
             txtNIM.Focus();
         }
+        private void LoadData()
+        {
+            
+        }
     }
 }
