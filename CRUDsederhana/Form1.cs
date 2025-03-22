@@ -2,5 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing; //Menggunakan namespace untuk manipulasi grafis
+using System.Drawing;
 using System.Linq;
+using System.Text;
