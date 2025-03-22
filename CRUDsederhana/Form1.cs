@@ -69,7 +69,7 @@ namespace CRUDsederhana
                     }hasiswa (NIM, Nama, Email, Telepon, Alamat) VALUES (@NIM, @Nama, @Email, @Telepon, @Alamat)";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue();
+                        cmd.Parameters.AddWithValue("@NIM", txtNIM.Text.Trim());
                 }
             }
         }
