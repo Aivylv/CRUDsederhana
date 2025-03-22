@@ -45,6 +45,7 @@ namespace CRUDsederhana
                     da.Fill(dt);
                     dgvMahasiswa.AutoGenerateColumns = true;
                     dgvMahasiswa.DataSource = dt;
+                    ClearForm(); // Auto Clear setelah LoadData
                 }
             }
         }
