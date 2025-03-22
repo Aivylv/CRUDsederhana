@@ -150,10 +150,10 @@ namespace CRUDsederhana
                             MessageBox.Show("Data berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadData();
                             ClearForm();}
-                        else{
-                            MessageBox.Show("Data tidak ditemukan atau gagal diperbarui!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
+                        else{MessageBox.Show("Data tidak ditemukan atau gagal diperbarui!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
                     }
                 }
+                catch (Exception ex){}
             }
         }
     }
