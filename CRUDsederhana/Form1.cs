@@ -133,33 +133,27 @@ namespace CRUDsederhana
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                try
-                {
-                    if (txtNIM.Text == "" || txtNama.Text == "" || txtEmail.Text == "" || txtTelepon.Text == "")
-                    {
+                try{
+                    if (txtNIM.Text == "" || txtNama.Text == "" || txtEmail.Text == "" || txtTelepon.Text == ""){
                         MessageBox.Show("Harap isi semua data!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                        return;}
                     conn.Open();
                     string query = "UPDATE Mahasiswa SET Nama = @Nama, Email = @Email, Telepon = @Telepon, Alamat = @Alamat WHERE NIM = @NIM";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
+                    using (SqlCommand cmd = new SqlCommand(query, conn)){
                         cmd.Parameters.AddWithValue("@NIM", txtNIM.Text.Trim());
                         cmd.Parameters.AddWithValue("@Nama", txtNama.Text.Trim());
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                         cmd.Parameters.AddWithValue("@Telepon", txtTelepon.Text.Trim());
                         cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text.Trim());
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
+                        if (rowsAffected > 0){
                             MessageBox.Show("Data berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadData();
-                            ClearForm();
-                        }
-                        else { MessageBox.Show("Data tidak ditemukan atau gagal diperbarui!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                            ClearForm();}
+                        else{
+                            MessageBox.Show("Data tidak ditemukan atau gagal diperbarui!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
                     }
                 }
-                
             }
         }
     }
