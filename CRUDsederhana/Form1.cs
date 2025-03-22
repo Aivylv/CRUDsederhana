@@ -129,5 +129,9 @@ namespace CRUDsederhana
             }
             else{MessageBox.Show("Pilih data yang akan dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);}
         }
+        private void btnUbah_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
