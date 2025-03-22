@@ -123,6 +123,7 @@ namespace CRUDsederhana
                                 }
                             }
                         }
+                        catch (Exception ex) { MessageBox.Show("Data tidak ditemukan atau gagal dihapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
             }
