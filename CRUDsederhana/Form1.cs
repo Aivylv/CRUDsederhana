@@ -117,6 +117,11 @@ namespace CRUDsederhana
                                     LoadData();
                                     ClearForm(); // Auto Clear setelah hapus data
                                 }
+                                else
+                                {
+                                    
+                                }
+                            }
                         }
                     }
                 }
