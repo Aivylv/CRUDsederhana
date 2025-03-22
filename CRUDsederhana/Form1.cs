@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace CRUDsederhana
 {
     public partial class Form1: Form
@@ -18,7 +17,6 @@ namespace CRUDsederhana
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -46,24 +44,18 @@ namespace CRUDsederhana
                     dgvMahasiswa.AutoGenerateColumns = true;
                     dgvMahasiswa.DataSource = dt;
                     ClearForm(); // Auto Clear setelah LoadData
-                }catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }catch (Exception ex){MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
             }
         }
-
         private void btnTambah_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
-                    if (txtNIM.Text == "" || txtNama.Text == "" || txtEmail.Text == "" || txtTelepon.Text == "")
-                    {
+                    if (txtNIM.Text == "" || txtNama.Text == "" || txtEmail.Text == "" || txtTelepon.Text == ""){
                         MessageBox.Show("Harap isi semua data!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                        return;}
                     conn.Open();
                     string query = "INSERT INTO Mahasiswa (NIM, Nama, Email, Telepon, Alamat) VALUES (@NIM, @Nama, @Email, @Telepon, @Alamat)";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -74,25 +66,15 @@ namespace CRUDsederhana
                         cmd.Parameters.AddWithValue("@Telepon", txtTelepon.Text.Trim());
                         cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text.Trim());
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
+                        if (rowsAffected > 0){
                             MessageBox.Show("Data berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadData();
                             ClearForm(); // Auto Clear setelah tambah data
-                        }
-                        else
-                        {
-                            MessageBox.Show("Data tidak berhasil ditambahkan!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        }else{MessageBox.Show("Data tidak berhasil ditambahkan!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }catch (Exception ex){MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
             }
         }
-
         private void btnHapus_Click(object sender, EventArgs e)
         {
             if (dgvMahasiswa.SelectedRows.Count > 0)
@@ -111,23 +93,16 @@ namespace CRUDsederhana
                             {
                                 cmd.Parameters.AddWithValue("@NIM", nim);
                                 int rowsAffected = cmd.ExecuteNonQuery();
-                                if (rowsAffected > 0)
-                                {
+                                if (rowsAffected > 0){
                                     MessageBox.Show("Data berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     LoadData();
                                     ClearForm(); // Auto Clear setelah hapus data
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Data tidak ditemukan atau gagal dihapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                }else{MessageBox.Show("Data tidak ditemukan atau gagal dihapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
                             }
-                        }
-                        catch (Exception ex) { MessageBox.Show("Data tidak ditemukan atau gagal dihapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        }catch (Exception ex) { MessageBox.Show("Data tidak ditemukan atau gagal dihapus!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
-            }
-            else{MessageBox.Show("Pilih data yang akan dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);}
+            }else{MessageBox.Show("Pilih data yang akan dihapus!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);}
         }
         private void btnUbah_Click(object sender, EventArgs e)
         {
@@ -152,8 +127,7 @@ namespace CRUDsederhana
                             ClearForm();}
                         else{MessageBox.Show("Data tidak ditemukan atau gagal diperbarui!", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
                     }
-                }
-                catch (Exception ex){MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
+                }catch (Exception ex){MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);}
             }
         }
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -161,18 +135,15 @@ namespace CRUDsederhana
             LoadData();
             MessageBox.Show($"Jumlah Kolom: {dgvMahasiswa.ColumnCount}\nJumlah Baris: {dgvMahasiswa.RowCount}", "Debugging DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void dgvMahasiswa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
+            if (e.RowIndex >= 0){
                 DataGridViewRow row = dgvMahasiswa.Rows[e.RowIndex];
                 txtNIM.Text = row.Cells[0].Value.ToString();
                 txtNama.Text = row.Cells[1].Value?.ToString();
                 txtEmail.Text = row.Cells[2].Value?.ToString();
                 txtTelepon.Text = row.Cells[3].Value?.ToString();
-                txtAlamat.Text = row.Cells[4].Value?.ToString();
-            }
+                txtAlamat.Text = row.Cells[4].Value?.ToString();}
         }
     }
 }
