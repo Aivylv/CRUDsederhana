@@ -86,6 +86,10 @@ namespace CRUDsederhana
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    
+                }
             }
         }
     }
