@@ -47,6 +47,10 @@ namespace CRUDsederhana
                     dgvMahasiswa.DataSource = dt;
                     ClearForm(); // Auto Clear setelah LoadData
                 }
+                catch (Exception ex)
+                {
+                    
+                }
             }
         }
     }
